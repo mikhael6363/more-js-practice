@@ -134,13 +134,110 @@ const nullElements = (arr) => {
 console.log(nullElements(array2));
 
 /*
-
+  4 Создать классы:
+  - Книга (автор, название, год издания, издательство)
+  - Электронная версия книги (автор, название, год издания, издательство, формат, электронный номер)
 */
+
+class Book {
+  constructor(author, title, year, publisher) {
+    this.author = author;
+    this.title = title;
+    this.year = year;
+    this.publisher = publisher;
+  }
+  get author() {
+    return this._author;
+  }
+  set author(newAuthor) {
+    if(typeof newAuthor !== 'string') {
+      throw new TypeError();
+    }
+    this._author = newAuthor;
+  }
+  get title() {
+    return this._title;
+  }
+  set title(newTitle) {
+    if(typeof newTitle !== 'string') {
+      throw new TypeError();
+    }
+    this._title = newTitle;
+  }
+  get year() {
+    return this._year;
+  }
+  set year(newYear) {
+    if(typeof newYear !== 'number' ||isNaN(newYear)) {
+      throw new TypeError();
+    }
+    this._year = newYear;
+  }
+  get publisher() {
+    return this._publisher;
+  }
+  set publisher(newPublisher) {
+    if(typeof newPublisher !== 'string') {
+      throw new TypeError();
+    }
+    this._publisher = newPublisher;
+  }
+}
+
+class Ebook extends Book {
+  constructor(author, title, year, publisher, format, eNum) {
+    super(author, title, year, publisher);
+    this.format = format;
+    this.eNum = eNum;
+  }
+  get format() {
+    return this._format;
+  }
+  set format(newFormat) {
+    if(typeof newFormat !== 'string') {
+      throw new TypeError();
+    }
+    this._format = newFormat;
+  }
+  get eNum() {
+    return this._eNum;
+  }
+  set eNum(newEnum) {
+    this._eNum = newEnum;
+  }
+}
+
+const book = new Book('Robert C. Martin', 'Clean Code', 2008, 'Prentice Hall');
+console.log(book);
+
+const ebook = new Ebook('Thomas H. Cormen', 'Introduction to Algorithms', 1989, 'MIT Press', '.epub & .pdf', 14146279370);
+console.log(ebook);
+
 
 
 /*
-
+  5 Требуется написать функцию, выводящую в консоль числа от 1 до n, где n — это целое число, которая функция принимает в качестве параметра, с такими условиями:
+  вывод fizzbuzz вместо чисел, кратных как 3, так и 5.
+  вывод fizz вместо чисел, кратных 3;
+  вывод buzz вместо чисел, кратных 5;
 */
-
+function fizzBuzz(num) {
+  for (let i = 1; i <= num; i++) {
+    if(i % 3 === 0 && i % 5 === 0) {
+      console.log('fizzbuz');
+      continue;
+    }
+    if(i % 3 === 0) {
+      console.log('fizz');
+      continue;
+    }
+    if(i % 5 === 0 ) {
+      console.log('buzz');
+      continue;
+    }
+    console.log(i);
+  }
+}
+fizzBuzz(15);
 
 
